@@ -1,39 +1,51 @@
 //U10416023 Forest
 
+//import the API we need to use
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+//Main class
 public class PrintCalendar {
   /** Main method */
   public static void main(String[] args) {
 
+    //Create two variable to contain the value
     int month,year;
 
+    //Create a new object with Calendar implements by GregorianCalendar
 		Calendar newCalendar = new GregorianCalendar();
 
     // Prompt the user to enter year
     // Prompt the user to enter month
     // Print calendar for the month of the year
 
+    //Use try to Judge whether the user input month and year or not
     try {
+      //Judge if the user already input month and year
 			year = Integer.valueOf(args[1]);
 			month = Integer.valueOf(args[0]);
 		}
 
-		catch (Exception ex) {
-
+    catch (Exception ex) {
+      //if Not then catch the current year
       try {
+        //Judge if the user just input the month
 				month = Integer.valueOf(args[0]);
+        //Get the current YEAR
 				year = newCalendar.get(Calendar.YEAR);
 			}
 
+      //Judge if the user didn't input anything
       catch (Exception ex2) {
+        //Get the current MONTH
 				month = newCalendar.get(Calendar.MONTH)+1;
+        //Get the current YEAR
 				year = newCalendar.get(Calendar.YEAR);
 			}
 
 		}
 
+    //Use the method "printMonth"
     printMonth(year, month);
 
   }
