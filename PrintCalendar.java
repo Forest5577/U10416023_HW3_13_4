@@ -1,22 +1,41 @@
-package chapter6;
+//U10416023 Forest
 
-import java.util.Scanner;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class PrintCalendar {
   /** Main method */
   public static void main(String[] args) {
-    Scanner input = new Scanner(System.in);
+
+    int month,year;
+
+		Calendar newCalendar = new GregorianCalendar();
 
     // Prompt the user to enter year
-    System.out.print("Enter full year (e.g., 2001): ");
-    int year = input.nextInt();
-
     // Prompt the user to enter month
-    System.out.print("Enter month in number between 1 and 12: ");
-    int month = input.nextInt();
-
     // Print calendar for the month of the year
+
+    try {
+			year = Integer.valueOf(args[1]);
+			month = Integer.valueOf(args[0]);
+		}
+
+		catch (Exception ex) {
+
+      try {
+				month = Integer.valueOf(args[0]);
+				year = newCalendar.get(Calendar.YEAR);
+			}
+
+      catch (Exception ex2) {
+				month = newCalendar.get(Calendar.MONTH)+1;
+				year = newCalendar.get(Calendar.YEAR);
+			}
+
+		}
+
     printMonth(year, month);
+
   }
 
   /** Print the calendar for a month in a year */
